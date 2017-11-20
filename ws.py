@@ -63,7 +63,7 @@ def main():
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('calendar', 'v3', http=http)
 
-    year = "2017"
+    year = "2018"
     timezone = "America/New_York"
 
     courses = page_soup.findAll("div", {"class":"table-thin-row small"})
