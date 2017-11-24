@@ -3,7 +3,7 @@ import httplib2
 import os
 
 from bs4 import BeautifulSoup as soup
-import requests
+# import requests
 from requests.auth import HTTPDigestAuth
 import re
 
@@ -55,6 +55,12 @@ def get_credentials():
     return credentials
 
 def main():
+    # url = 'https://myuk.uky.edu/zAPPS/CourseCatalog/Schedule/Print/2018/010'
+    # res = requests.get(url)
+    # page_html = res.text
+    # page_soup = soup(page_html, "html.parser")
+    # print(page_soup)
+
     page_html = open('calendar.html', 'r').read()
     page_soup = soup(page_html, "html.parser")
 
