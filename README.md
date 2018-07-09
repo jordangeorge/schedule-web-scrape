@@ -8,5 +8,5 @@ It works for basic courses, not for courses with lab/recitation/extra days and m
 
 Use
 - Copy/paste schedule into a file named calendar.html
-- Change year and calendarId in `ws.py` if applicable
+- Change year in `ws.py` if applicable
 - Run with `python3 ws.py`
