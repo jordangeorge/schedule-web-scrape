@@ -70,7 +70,7 @@ def main():
     service = discovery.build('calendar', 'v3', http=http)
 
     year = "2018"
-    timezone = "America/Kentucky/Louisville"
+    timezone = "America/New_York"
 
     courses = page_soup.findAll("div", {"class":"table-thin-row small"})
 
