@@ -90,7 +90,7 @@ def main():
         hourList = hour.split(" - ")
         datesList = dates.split("-")
         googleDateTimeList = []
-        for i in range(0,len(datesList)):
+        for i in range(0, len(datesList)):
             h=''.join(hourList[i].split(" "))
             new_time = dt.strptime(h, '%I:%M%p').strftime("%H:%M")
             new_time += ":00"
@@ -149,7 +149,8 @@ def main():
             recurrence
           ]
         }
-        event = service.events().insert(calendarId='primary', body=event).execute()
+        calendarId = 'primary'
+        event = service.events().insert(calendarId=calendarId, body=event).execute()
         print('Event created: %s' % (event.get('htmlLink')))
 
 
