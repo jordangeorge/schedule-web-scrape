@@ -2,5 +2,6 @@ client_secret.json
 test.ipynb
 .ipynb_checkpoints/
 calendar.html
-insertTest.py
-quickstart.py
+/past_calendars
+__pycache__
+.DS_Store
