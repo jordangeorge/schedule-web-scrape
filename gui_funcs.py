@@ -2,7 +2,6 @@ import httplib2
 import os
 
 from bs4 import BeautifulSoup as soup
-# import requests
 import re
 
 import pytz
@@ -54,40 +53,17 @@ def get_credentials():
         print('Storing credentials to ' + credential_path)
     return credentials
 
-eventIdList = []
-calendarId = 'primary'
-# calendarId = 'un1nmhba2l7vfm5vvie66m6nrk@group.calendar.google.com'
-
 def getService():
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
     return discovery.build('calendar', 'v3', http=http)
 
-def main():
-    choiceText = "\n1. Add\n2. Delete\n3. Exit\nChoice: "
-    choice = int(input(choiceText))
+def addToCalendar(fileName, calendarId):
+    output = ""
 
-    while choice == 1 or choice == 2:
-        if choice == 1:
-            add()
-        elif choice == 2:
-            delete()
-        choice = int(input(choiceText))
-
-    exit()
-
-def add():
-    # url = 'https://myuk.uky.edu/zAPPS/CourseCatalog/Schedule/Print/2018/010'
-    # res = requests.get(url)
-    # page_html = res.text
-    # page_soup = soup(page_html, "html.parser")
-    # print(page_soup)
-
-    fileName = "calendar.html"
     page_html = open(fileName, 'r').read()
     page_soup = soup(page_html, "html.parser")
 
-    # httplib2.debuglevel = 4
     service = getService()
 
     six_months = date.today() + relativedelta(months=+6)
@@ -107,7 +83,7 @@ def add():
         summary = title + " - " + newSection
 
         weekdays = course.findAll("div")[7].text
-        if weekdays == "TBD": # for online classes that do not have a time or location
+        if weekdays == "TBD":
             continue
 
         hour = course.findAll("div")[8].text
@@ -176,18 +152,7 @@ def add():
           ]
         }
         event = service.events().insert(calendarId=calendarId, body=event).execute()
-        print('Event created for {}: {}'.format(title, event.get('htmlLink')))
 
-        eventURL = event.get('htmlLink')
-        eventIdIndex = eventURL.rfind("=")
-        eventId = eventURL[eventIdIndex+1:]
-        eventIdList.append(eventId)
+        output += 'Event created for {}\n'.format(title)
 
-def delete():
-    service = getService()
-    for id in eventIdList:
-        event = service.events().delete(calendarId=calendarId, eventId=id).execute()
-        print(event)
-
-if __name__ == '__main__':
-    main()
+    return output.rstrip("\n")
