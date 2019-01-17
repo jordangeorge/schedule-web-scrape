@@ -1,5 +1,16 @@
-# MyUK Course Schedule Web Scrape
+# [MyUK Course Schedule Web Scrape](https://github.com/jordangeorge/schedule-web-scrape)
 
+### Contents
+- .gitignore
+- README.md
+- gui.py
+  - PyQt5 interface for adding to calendar
+- gui_funcs.py
+  - Functions for gui.py
+- ws.py
+  - Terminal file
+
+### About
 This is an idea I came up with as a personal intro to web scraping. The purpose of this program was to web scrape my schedule from the University of Kentucky's course planner and insert the data to my Google calendar using the [Google Calendar API](https://developers.google.com/calendar/), which was a new experience for me as well. I also created a simple GUI using [PyQt5](https://pypi.org/project/PyQt5/).
 
 Due to authorization issues, I couldn't get the webpage info I needed straight from the uky website. I copied and pasted the info into a separate file and went from there. Besides this issue, the program works.
