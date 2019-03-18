@@ -70,8 +70,8 @@ def main():
     while choice == 1 or choice == 2:
         if choice == 1:
             add()
-        elif choice == 2:
-            delete()
+        # elif choice == 2:
+            # delete()
         choice = int(input(choiceText))
 
     exit()
@@ -178,16 +178,16 @@ def add():
         event = service.events().insert(calendarId=calendarId, body=event).execute()
         print('Event created for {}: {}'.format(title, event.get('htmlLink')))
 
-        eventURL = event.get('htmlLink')
-        eventIdIndex = eventURL.rfind("=")
-        eventId = eventURL[eventIdIndex+1:]
-        eventIdList.append(eventId)
+        # eventURL = event.get('htmlLink')
+        # eventIdIndex = eventURL.rfind("=")
+        # eventId = eventURL[eventIdIndex+1:]
+        # eventIdList.append(eventId)
 
-def delete():
-    service = getService()
-    for id in eventIdList:
-        event = service.events().delete(calendarId=calendarId, eventId=id).execute()
-        print(event)
+# def delete():
+#     service = getService()
+#     for id in eventIdList:
+#         event = service.events().delete(calendarId=calendarId, eventId=id).execute()
+#         print(event)
 
 if __name__ == '__main__':
     main()

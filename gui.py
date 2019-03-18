@@ -55,17 +55,17 @@ class FirstWindow(QWidget):
         self.output = ""
         self.outputLabel = QLabel(self.output, self)
 
-        self.deleteButton = QPushButton("Delete most recently added courses", self)
+        # self.deleteButton = QPushButton("Delete most recently added courses", self)
         # self.deleteButton.clicked.connect(self.delete)
-        self.deleteButton.setCursor(cursor)
-        self.deleteButton.setStyleSheet("QPushButton { \
-                                    background-color: #EA4235; \
-                                    color: #FFF; \
-                                    font: 15pt Arial; \
-                                    padding: 6px; \
-                                    border: none; \
-                                    border-radius: 10px; \
-                                    }")
+        # self.deleteButton.setCursor(cursor)
+        # self.deleteButton.setStyleSheet("QPushButton { \
+        #                                 background-color: #EA4235; \
+        #                                 color: #FFF; \
+        #                                 font: 15pt Arial; \
+        #                                 padding: 6px; \
+        #                                 border: none; \
+        #                                 border-radius: 10px; \
+        #                                 }")
 
         numberLabelStyling = "QLabel { \
                                 color: #000; \
@@ -88,16 +88,16 @@ class FirstWindow(QWidget):
         layout.addWidget(threeLabel, 2, 0)
         layout.addWidget(addToCalButton, 2, 1)
         layout.addWidget(self.outputLabel, 3, 1)
-        layout.addWidget(self.deleteButton, 4, 2)
+        # layout.addWidget(self.deleteButton, 4, 2)
         self.setLayout(layout)
 
         self.show()
 
     def singleBrowse(self):
         self.filePath = QFileDialog.getOpenFileName(self,
-                                               "Single File",
-                                               "~/Desktop",
-                                              "*.html")[0]
+                                                    "Single File",
+                                                    "~/Desktop",
+                                                    "*.html")[0]
         lastSlashIndex = self.filePath.rfind('/')
         fileName = self.filePath[lastSlashIndex+1:]
         self.chosenFileLabel.setText(fileName)
